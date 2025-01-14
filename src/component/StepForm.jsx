@@ -92,17 +92,13 @@ const StepForm = () => {
                     {/* Step Circles */}
                     <div className="flex justify-between w-full items-center relative">
                         {["Step 1", "Step 2", "Step 3"].map((_, index) => (
-                            <div key={index} className="flex items-center w-full">
-                                {/* Line */}
-                                <div
-                                    className={`flex-1 h-0.5 ${index > 0 && currentStep > index ? "bg-green-500" : index > 0 ? "bg-gray-300" : ""}`}
-                                ></div>
+                            <div key={index} className="flex items-center w-full relative">
                                 {/* Circle */}
                                 <div className="flex flex-col items-center">
                                     <div
                                         className={`w-8 h-8 flex items-center justify-center rounded-full ${index + 1 <= currentStep
-                                            ? "bg-green-500 text-white"
-                                            : "bg-gray-200 text-gray-400"
+                                                ? "bg-green-500 text-white"
+                                                : "bg-gray-200 text-gray-400"
                                             }`}
                                     >
                                         {index + 1 <= currentStep ? (
@@ -112,9 +108,17 @@ const StepForm = () => {
                                         )}
                                     </div>
                                 </div>
+                                {/* Line */}
+                                {index < 2 && ( // Only render the line if it's not the last circle
+                                    <div
+                                        className={`flex-1 h-1 w-[184px] ${currentStep > index + 1 ? "bg-green-500" : "bg-gray-300"
+                                            }`}
+                                    ></div>
+                                )}
                             </div>
                         ))}
                     </div>
+
                 </div>
 
 
